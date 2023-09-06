@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App de Tareas</title>
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    
+    <nav id="nav-bar">
+        <div id="nav-bar-container">
+            <h1 id="nav-bar-logo">Lista tareas</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"    stroke-width="1.5" stroke="currentColor" id="nav-bar-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <div id="nav-bar-links-container">
+                <a class="nav-bar-link" href="">Home</a>
+                <a class="nav-bar-link" href="">App</a>
+            </div>
+              
+        </div>
+    </nav>
+    <main id="main-container">
+        <h1 id="main-title">Todo<span>App</span></h1>
+        <div id="main-desc-container">
+            <input type="text" placeholder=" Agregue una tarea" name="nombre" id="">
+            <button>Agregar</button>
+            <ul>
+                <li>Meditar</li>
+                <li>Agradecer</li>
+                <li>Hacer ejercicio</li>
+                <li>Alistarse</li>
+                <li>Trabajar</li>
+            </ul>
+        </div>
+    </main>
 </body>
 </html>
