@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App de Tareas</title>
     <link rel="stylesheet" href="app.css">
+    <script src="https://kit.fontawesome.com/07b62496bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav id="nav-bar">
@@ -24,13 +25,37 @@
         <h1 id="main-title">Todo<span>App</span></h1>
         <div id="main-desc-container">
             <input type="text" placeholder=" Agregue una tarea" name="nombre" id="">
-            <button>Agregar</button>
-            <ul>
-                <li>Meditar</li>
-                <li>Agradecer</li>
-                <li>Hacer ejercicio</li>
-                <li>Alistarse</li>
-                <li>Trabajar</li>
+            <button id="main-desc-btn">Agregar</button>
+            
+            <ul class="lista">
+                <li>
+                  <div >
+                    <input class="seleccion" type="checkbox">
+                    <p class="tarea">Meditar</p>
+                    <i class="fa-solid fa-trash fa-spin fa-lg" style="color: #a01c0d;"></i>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <input class="seleccion" type="checkbox">
+                    <p class="tarea">Leer</p> 
+                    <i class="fa-solid fa-trash fa-spin fa-lg" style="color: #a01c0d;"></i>                 </div>
+                </li>
+                <li>
+                  <div>
+                    <input class="seleccion" type="checkbox">
+                    <p class="tarea">Hacer Ejercicio</p> 
+                    <i class="fa-solid fa-trash fa-spin fa-lg" style="color: #a01c0d;"></i>                 </div>
+                </li>
+                <li>
+                  <div>
+                    <input class="seleccion" type="checkbox">
+                    <p class="tarea">Trabajar</p>
+                    <i class="fa-solid fa-trash fa-spin fa-lg" style="color: #a01c0d;"></i>
+                  </div>
+                </li>
+    
+                
             </ul>
         </div>
     </main>

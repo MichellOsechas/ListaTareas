@@ -10,7 +10,9 @@
   border-color: #e5e7eb;
   /* 2 */
 }
-
+::-webkit-scrollbar{
+    display: none;
+}
 body, h1 {
     margin: 0;
 }
@@ -21,6 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 /* Navbar */
@@ -82,25 +85,66 @@ body {
     color: rgb(8, 8, 104);
 }
 #main-desc-container{
-    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
     gap: 1rem;
     background-color: rgba(84, 84, 249, 0.5);
     border-radius: 2rem;
+    padding: 2rem;
+    width: 40rem;
 }
 #main-desc-container input {
-    width: 30rem;
-    height: 2rem;
+    width: 20rem;
+    height: 2.5rem;
     border: solid 0.1rem;
-    align-items: center;
     font-size: large;
-
+    border-radius: 1rem;
 }
-ul {
+#main-desc-btn{
+    background-color: rgb(71, 71, 235);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: large;
+    border-radius: 1rem;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.175s ease-in-out;
+    margin-left: 1rem;
+}
+#main-desc-btn:hover{
+    background-color: rgb(8, 8, 104);
+}
+
+#main-desc-container .lista {
     display: flex;
-    height: 20rem;
-    overflow: auto;
-    width: 50rem;
+    flex-direction: column; 
+    text-align: left;
+    left: 0;
+    list-style-type: none;
+    position:relative;
+}
+
+#main-desc-container .lista .seleccion {
+    display: flex;
+    position: relative;
+    width: 1rem;
+    left: 0;
+}
+#main-desc-container .lista .tarea{
+    display: flex;
+    position: relative;
+    flex-direction: row; 
+}
+#main-desc-container .lista i {
+    position: relative;
+    display: flex;
+    justify-content: right;
+    flex-direction: row; 
 }
 @media (min-width: 768px){
     #nav-bar-links-container {
@@ -110,13 +154,15 @@ ul {
         display: none;
     }
     #main-container{
+        flex-direction: row;
         width: 80%;
         align-items: center;
     }
 }
 @media (min-width: 1024px) {
-    #main-container{
-        width: 70%;
+    #main-container{       
+        flex-direction: row;
+        width: 80%;
         align-items: center;
     }
     #main-title {

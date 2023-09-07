@@ -86,6 +86,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
 }
 #main-desc-text {
     text-align: justify;
