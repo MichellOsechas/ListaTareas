@@ -23,7 +23,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 /* Navbar */
@@ -70,9 +69,7 @@ body {
 .nav-bar-link:hover {
     text-decoration: underline;
 }
-
 #main-container{
-    display: flex;
     flex-direction: column;
     padding: 0 1rem;
     gap: 1rem;
@@ -85,18 +82,21 @@ body {
     color: rgb(8, 8, 104);
 }
 #main-desc-container{
+    display: flex;
+    position: relative;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
     gap: 1rem;
     background-color: rgba(84, 84, 249, 0.5);
     border-radius: 2rem;
-    padding: 2rem;
-    width: 40rem;
+    padding: 1rem;
+    justify-content:center;
+    
 }
 #main-desc-container input {
     width: 20rem;
+    align-items: center;
     height: 2.5rem;
+    padding: 1rem;
     border: solid 0.1rem;
     font-size: large;
     border-radius: 1rem;
@@ -104,47 +104,39 @@ body {
 #main-desc-btn{
     background-color: rgb(71, 71, 235);
     color: white;
-    padding: 0.25rem 0.5rem;
     width: 10rem;
+    margin: 1rem;
     height: 2.5rem;
     font-size: large;
     border-radius: 1rem;
-    text-align: center;
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.175s ease-in-out;
-    margin-left: 1rem;
 }
 #main-desc-btn:hover{
     background-color: rgb(8, 8, 104);
 }
-
 #main-desc-container .lista {
     display: flex;
-    flex-direction: column; 
-    text-align: left;
-    left: 0;
-    list-style-type: none;
-    position:relative;
+    flex-direction: column;
 }
-
+#main-desc-container .lista2 {
+    display: flex;
+    position: relative;
+    text-align: left;
+    list-style-type: none;
+}
 #main-desc-container .lista .seleccion {
     display: flex;
-    position: relative;
-    width: 1rem;
+    position: absolute;
+    width: 1.5rem;
     left: 0;
 }
-#main-desc-container .lista .tarea{
+#main-desc-container .lista i{
     display: flex;
-    position: relative;
-    flex-direction: row; 
-}
-#main-desc-container .lista i {
-    position: relative;
-    display: flex;
-    justify-content: right;
-    flex-direction: row; 
+    position: absolute;
+    right: 0;
 }
 @media (min-width: 768px){
     #nav-bar-links-container {
@@ -154,15 +146,13 @@ body {
         display: none;
     }
     #main-container{
-        flex-direction: row;
-        width: 80%;
+        width: 70%;
         align-items: center;
     }
 }
 @media (min-width: 1024px) {
-    #main-container{       
-        flex-direction: row;
-        width: 80%;
+    #main-container{
+        width: 70%;
         align-items: center;
     }
     #main-title {
