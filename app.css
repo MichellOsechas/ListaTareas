@@ -10,9 +10,6 @@
   border-color: #e5e7eb;
   /* 2 */
 }
-::-webkit-scrollbar{
-    display: none;
-}
 body, h1 {
     margin: 0;
 }
@@ -23,6 +20,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y:hidden;
+
 }
 
 /* Navbar */
@@ -70,30 +69,42 @@ body {
     text-decoration: underline;
 }
 #main-container{
+    display: flex;
     flex-direction: column;
     padding: 0 1rem;
     gap: 1rem;
+    align-items: center;
 }
 #main-title {
     text-align: center;
+    gap: 1rem;
     color: rgb(71, 71, 235);
 }
 #main-title > span {
     color: rgb(8, 8, 104);
 }
 #main-desc-container{
-    display: flex;
+    display:block;
     position: relative;
     flex-direction: column;
     gap: 1rem;
     background-color: rgba(84, 84, 249, 0.5);
-    border-radius: 2rem;
+    border-radius: 1rem;
+    border: solid 0.1rem rgb(71, 71, 235);
     padding: 1rem;
-    justify-content:center;
-    
+    overflow-y:scroll;
+    height: 20rem;
+    width: 19rem;
+}
+#main-desc-container .container {
+    position:absolute;   
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
 }
 #main-desc-container input {
-    width: 20rem;
+    width: 17rem;
     align-items: center;
     height: 2.5rem;
     padding: 1rem;
@@ -126,16 +137,21 @@ body {
     position: relative;
     text-align: left;
     list-style-type: none;
+    font-size: 1.2rem;
+    top: 6rem;
+    margin: 0;
 }
 #main-desc-container .lista .seleccion {
     display: flex;
     position: absolute;
-    width: 1.5rem;
+    width: 2rem;
+    top: 0.5rem;
     left: 0;
 }
 #main-desc-container .lista i{
-    display: flex;
+    display:flex;
     position: absolute;
+    top: 1.6rem;
     right: 0;
 }
 @media (min-width: 768px){
@@ -147,22 +163,35 @@ body {
     }
     #main-container{
         width: 70%;
-        align-items: center;
     }
+    #main-desc-container{
+    width: 32rem;
+    justify-content: center;
+    }
+    #main-desc-container .lista2 {
+        top: 4rem;
+    }
+
 }
 @media (min-width: 1024px) {
     #main-container{
         width: 70%;
-        align-items: center;
     }
     #main-title {
-        font-size: 4rem;
+        font-size: 3rem;
     }
-    #main-desc-text {
+    #main-desc-container .lista2 {
         font-size: 1.25rem;
     }
     #main-desc-btn {
         font-size: 1.25rem;
+    }
+    #main-desc-container{
+        width: 48rem;
+        justify-content: center;
+    }
+    #main-desc-container input {
+        width: 30rem;
     }
 }
     
