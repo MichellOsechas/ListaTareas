@@ -78,9 +78,20 @@ body {
 #main-title {
     text-align: center;
     gap: 1rem;
+    margin-top: 2rem;
     color: rgb(71, 71, 235);
+    font-size: 2.5rem;
 }
 #main-title > span {
+    color: rgb(8, 8, 104);
+}
+#main-title2 {
+    text-align: center;
+    gap: 1rem;
+    margin: 0;
+    color: rgb(71, 71, 235);
+}
+#main-title2 > span {
     color: rgb(8, 8, 104);
 }
 #main-desc-container{
