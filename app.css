@@ -145,6 +145,8 @@ body {
 }
 #main-desc-container .lista2 {
     display: flex;
+    gap: 1rem;
+    flex-direction: column;
     position: relative;
     text-align: left;
     list-style-type: none;
@@ -152,19 +154,61 @@ body {
     top: 6rem;
     margin: 0;
 }
-#main-desc-container .lista .seleccion {
+#main-desc-container .tarea {
+    left: 2rem;
+}
+
+#main-desc-container .seleccion {
     display: flex;
     position: absolute;
-    width: 2rem;
+    justify-content: left;
+    width: 1.5rem;
     top: 0.5rem;
-    left: 0;
+    margin-left: -2rem;
 }
-#main-desc-container .lista i{
+.icon {
     display:flex;
+    background-color: rgb(235, 235, 253);
     position: absolute;
-    top: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgb(8, 8, 104);
+    width: 2rem;
+    height: 2rem;
     right: 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
+
+.icon:hover {
+    transform: scale(1.5);
+}
+
+.icon i{
+    font-size: 1.2rem;
+}
+
+
+/* i{
+    transition: all 0.3s ease-in-out;
+}
+
+.icon i{
+    font-size: 1rem;
+}
+
+.icon:hover > i {
+  
+    font-size: 4rem;
+}
+
+.icon:hover {
+    background-color: rgb(8, 8, 104);
+    width: 4rem;
+    height: 4rem;
+} */
 @media (min-width: 768px){
     #nav-bar-links-container {
         display: flex;
