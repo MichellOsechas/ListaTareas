@@ -112,7 +112,7 @@ body {
     align-items: center;
     z-index: 1;
 }
-#input {
+.title-input {
     width: 17rem;
     align-items: center;
     height: 2rem;
@@ -121,7 +121,7 @@ body {
     font-size: large;
     border-radius: 1rem;
 }
-#main-desc-btn{
+.container-btn{
     background-color: rgb(71, 71, 235);
     color: white;
     width: 8rem;
@@ -134,7 +134,7 @@ body {
     text-decoration: none;
     transition: all 0.175s ease-in-out;
 }
-#main-desc-btn:hover{
+.container-btn:hover{
     background-color: rgb(8, 8, 104);
 }
 #list {
