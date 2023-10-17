@@ -32,6 +32,7 @@ const getListItemHtml = ({ title }) => {
     
     //RETORNO EL HTML PARA PODER UTILIZARLO EN MI FORMULARIO
     return listItemHtml
+    
 }
 const renderNotes = () => {
     list.innerHTML = ''
@@ -50,8 +51,7 @@ const renderNotes = () => {
         
         //AGREGO EL ELEMENTO CREADO A LA LISTA
         list.append(listElement)
-    })
-    
+    })    
 }
 
 container.addEventListener('submit', e => {
@@ -81,11 +81,10 @@ container.addEventListener('submit', e => {
 const getNotes = () => {
     //OBTENGO LAS NOTAS EN FORMATO JSON
     const notasJSON = localStorage.getItem('notes')
-    console.log(notasJSON);
 
     //CREO UN NUEVO ARRAY CON UNA CONDICION, SI EXISTE UN ARRAY EN LOCALSTORAGE, USO ESE ARRAY, SI NO, CREO UN ARRAY VACIO
     notas = notasJSON ? JSON.parse(notasJSON) : []
-
+    
     renderNotes()
 }
 
@@ -94,14 +93,16 @@ getNotes()
 list.addEventListener ('click', e => {
     if (e.target.closest ('.delete')) {
         e.target.closest ('.delete').parentElement.remove();
-        localStorage.setItem('notes', list.innerHTML);
+        // const cantidadLi = document.querySelector('.list-item')
+        // console.log(cantidadLi.length);
         conteoNota ()
+        localStorage.setItem('notes', JSON.stringify(notas))
     } 
 
     else if (e.target.closest ('.seleccion')) {
         const seleccion = e.target.closest ('.seleccion')
         const nota = seleccion.parentElement.children [1]
-
+        
         seleccion.classList.add ('check')
         seleccion.classList.remove ('seleccion')
         nota.classList.add ('tachado')
@@ -112,16 +113,12 @@ list.addEventListener ('click', e => {
     seleccion.classList.add ('check')
     seleccion.classList.remove ('seleccion')
     nota.classList.add ('tachado')      
-    conteoNota ()
     
-      localStorage.setItem('notes', list.innerHTML);
-      
-      // 1. COMO HACER PARA QUE CUANDO REFRESQUE LA PAG SE ME QUEDEN LAS CLASES
-      
-    })
-    
-const conteoNota = () => {
-    let element = list.querySelectorAll('li')
+    localStorage.setItem('notes', JSON.stringify(notas))
+})
+
+    const conteoNota = () => {
+        let element = list.querySelectorAll('li')
     let checkbox = list.querySelectorAll('.check')
     let pendientes = () => {
         if (element.length = 0) {
@@ -133,13 +130,12 @@ const conteoNota = () => {
         else {
             pendientes = 0
         }
-    }
-    pendientes ()
+        }
+        pendientes ()
     
-    conteo.innerHTML = `
-    <h4 class="conteo">Total de tareas : ${element.length}</h4>
-    <h4 class="conteo">Tareas completadas: ${checkbox.length}</h4>
-    <h4 class="conteo">Tareas pendientes: ${pendientes}</h4>
-    `
-    localStorage.setItem('notes', list.innerHTML);
-}
+        conteo.innerHTML = `
+            <h4 class="conteo">Total de tareas : ${element.length}</h4>
+            <h4 class="conteo">Tareas completadas: ${checkbox.length}</h4>
+            <h4 class="conteo">Tareas pendientes: ${pendientes}</h4>
+        `        
+    }

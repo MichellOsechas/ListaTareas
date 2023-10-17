@@ -99,12 +99,11 @@ body {
     flex-direction: column;
     background-color: rgba(147, 147, 252, 0.5);
     border-radius: 1rem;
-    border: solid 0.1rem rgb(71, 71, 235);
     padding: 1rem;
     overflow-y:scroll;
     height: 17rem;
     width: 19rem;
-}
+    box-shadow: 0 25px 50px -12px rgb(145, 145, 235);}
 #main-desc-container .container {
     position:absolute;   
     display: block;
@@ -208,14 +207,15 @@ body {
 }
 
 #main-container .conteo {
-    justify-content: space-between;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     text-align: center;
     margin: 0;
-    color: rgb(8, 8, 104);
+    color: white;
     font-size: 0.9rem;
     margin-top: 0.4rem;
+    background-color: rgba(24, 24, 241, 0.5);
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
 }
 /* i{
     transition: all 0.3s ease-in-out;
@@ -251,6 +251,10 @@ body {
     }
     #main-desc-container .list-item {
         top: 4rem;
+    }
+    #conteo {
+        display: flex;
+        gap: 1rem;
     }
 
 }
