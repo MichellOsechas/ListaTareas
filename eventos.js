@@ -13,26 +13,30 @@ const getListItemHtml = ({ title }) => {
     //CREO EL HTML DEL LI
     const listItemHtml =
         `
-        <button class="seleccion">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </button>
-        <div class="tarea">
-        <p>${title}</p>                         // <--- COMENTARIO: Esto se puede poner asi????
-        </div>
-        <button class="delete">
-            <i class="fa-solid fa-trash" style="color: #f64456;"></i>
-        </button>
+        <div>
+            <button class="seleccion">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </button>
+            <div class="tarea">
+                <p>${title}</p>     
+            </div>
+            <button class="delete">
+                <i class="fa-solid fa-trash" style="color: #de460a;"></i>
+            </button>
         </div>
     `
+    
     //RETORNO EL HTML PARA PODER UTILIZARLO EN MI FORMULARIO
     return listItemHtml
 }
-
 const renderNotes = () => {
+    list.innerHTML = ''
+    
+
     //A PARTIR DEL ARRAY DE LAS NOTAS, USO UN BUCLE PARA ACCEDER A CADA NOTA
     notas.forEach(note => { //NOTE ES EL OBJETO O VALOR DE CADA NOTA
         //CREO EL ELEMENTO LI
@@ -43,10 +47,11 @@ const renderNotes = () => {
 
         //USANDO LA FUNCION, OBTENGO EL HTML DEL ELEMENTO
         listElement.innerHTML = getListItemHtml(note)
-
+        
         //AGREGO EL ELEMENTO CREADO A LA LISTA
         list.append(listElement)
     })
+    
 }
 
 container.addEventListener('submit', e => {
@@ -63,13 +68,14 @@ container.addEventListener('submit', e => {
 
     //GUARDO EL ARRAY EN LOCALSTOGE, EN FORMATO JSON
     localStorage.setItem('notes', JSON.stringify(notas))
-
+    
     //RENDERIXO EL HTML
-    renderNotes()
-
+    getNotes()
+    
+    
     //REINICIO LOS VALORES DE LOS INPUTS
     titleInput.value = ''
-
+    conteoNota ()
 })
 
 const getNotes = () => {
@@ -85,3 +91,55 @@ const getNotes = () => {
 
 getNotes()
 
+list.addEventListener ('click', e => {
+    if (e.target.closest ('.delete')) {
+        e.target.closest ('.delete').parentElement.remove();
+        localStorage.setItem('notes', list.innerHTML);
+        conteoNota ()
+    } 
+
+    else if (e.target.closest ('.seleccion')) {
+        const seleccion = e.target.closest ('.seleccion')
+        const nota = seleccion.parentElement.children [1]
+
+        seleccion.classList.add ('check')
+        seleccion.classList.remove ('seleccion')
+        nota.classList.add ('tachado')
+        conteoNota ()
+    }
+    
+    titleInput.setAttribute('value', titleInput.value)
+    seleccion.classList.add ('check')
+    seleccion.classList.remove ('seleccion')
+    nota.classList.add ('tachado')      
+    conteoNota ()
+    
+      localStorage.setItem('notes', list.innerHTML);
+      
+      // 1. COMO HACER PARA QUE CUANDO REFRESQUE LA PAG SE ME QUEDEN LAS CLASES
+      
+    })
+    
+const conteoNota = () => {
+    let element = list.querySelectorAll('li')
+    let checkbox = list.querySelectorAll('.check')
+    let pendientes = () => {
+        if (element.length = 0) {
+            pendientes = 0
+        }
+        else if (element.length > checkbox.length) {
+            pendientes = element.length - checkbox.length
+        }
+        else {
+            pendientes = 0
+        }
+    }
+    pendientes ()
+    
+    conteo.innerHTML = `
+    <h4 class="conteo">Total de tareas : ${element.length}</h4>
+    <h4 class="conteo">Tareas completadas: ${checkbox.length}</h4>
+    <h4 class="conteo">Tareas pendientes: ${pendientes}</h4>
+    `
+    localStorage.setItem('notes', list.innerHTML);
+}

@@ -97,7 +97,7 @@ body {
     display:block;
     position: relative;
     flex-direction: column;
-    background-color: rgba(84, 84, 249, 0.5);
+    background-color: rgba(147, 147, 252, 0.5);
     border-radius: 1rem;
     border: solid 0.1rem rgb(71, 71, 235);
     padding: 1rem;
@@ -120,6 +120,9 @@ body {
     border: solid 0.1rem;
     font-size: large;
     border-radius: 1rem;
+}
+.title-input:focus {
+    outline: none;
 }
 .container-btn{
     background-color: rgb(71, 71, 235);
@@ -161,11 +164,11 @@ body {
     opacity: 60%;
 }
 
-#list .seleccion {
+#list .seleccion, .check{
     display: flex;
     position: absolute;
     justify-content: center;
-    background-color: rgba(169, 169, 244, 0.5);
+    background-color: rgba(197, 197, 251, 0.5);
     top: 0.9rem;
     margin-left: -2.5rem;
     align-items: center;
@@ -173,12 +176,15 @@ body {
     height: 2rem;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    color: rgb(62, 62, 231);
+    color: rgb(0, 0, 0);
+}
+#list .seleccion:hover {
+    transform: scale(1.1);
 }
 
 .check {
-    color: rgb(18, 59, 18);
-
+    color: rgb(34, 109, 34);
+    stroke-width: 2;
 }
 .delete {
     display:flex;
@@ -198,10 +204,13 @@ body {
 }
 
 .delete:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
 }
 
 #main-container .conteo {
+    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     text-align: center;
     margin: 0;
     color: rgb(8, 8, 104);
