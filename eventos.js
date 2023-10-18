@@ -7,7 +7,7 @@ const conteo = document.querySelector('#conteo');
 
 let notas = []
 
-const getListItemHtml = ({ title }) => {
+const getListItemHtml = ({ title }, index) => {
     //TITLE Y DESCRIPTION SON LAS PROPIEDADES DE ESA NOTA
 
     //CREO EL HTML DEL LI
@@ -25,18 +25,18 @@ const getListItemHtml = ({ title }) => {
                 <p>${title}</p>     
             </div>
             <button class="delete">
-                <i class="fa-solid fa-trash" style="color: #de460a;"></i>
+                <i class="fa-solid fa-trash" style="color: #de460a;" id="${index}"></i>
             </button>
         </div>
     `
-    
+
     //RETORNO EL HTML PARA PODER UTILIZARLO EN MI FORMULARIO
     return listItemHtml
-    
+
 }
 const renderNotes = () => {
     list.innerHTML = ''
-    
+
 
     //A PARTIR DEL ARRAY DE LAS NOTAS, USO UN BUCLE PARA ACCEDER A CADA NOTA
     notas.forEach(note => { //NOTE ES EL OBJETO O VALOR DE CADA NOTA
@@ -48,10 +48,10 @@ const renderNotes = () => {
 
         //USANDO LA FUNCION, OBTENGO EL HTML DEL ELEMENTO
         listElement.innerHTML = getListItemHtml(note)
-        
+
         //AGREGO EL ELEMENTO CREADO A LA LISTA
         list.append(listElement)
-    })    
+    })
 }
 
 container.addEventListener('submit', e => {
@@ -68,14 +68,14 @@ container.addEventListener('submit', e => {
 
     //GUARDO EL ARRAY EN LOCALSTOGE, EN FORMATO JSON
     localStorage.setItem('notes', JSON.stringify(notas))
-    
+
     //RENDERIXO EL HTML
     getNotes()
-    
-    
+
+
     //REINICIO LOS VALORES DE LOS INPUTS
     titleInput.value = ''
-    conteoNota ()
+    conteoNota()
 })
 
 const getNotes = () => {
@@ -84,41 +84,43 @@ const getNotes = () => {
 
     //CREO UN NUEVO ARRAY CON UNA CONDICION, SI EXISTE UN ARRAY EN LOCALSTORAGE, USO ESE ARRAY, SI NO, CREO UN ARRAY VACIO
     notas = notasJSON ? JSON.parse(notasJSON) : []
-    
+
     renderNotes()
 }
 
 getNotes()
 
-list.addEventListener ('click', e => {
-    if (e.target.closest ('.delete')) {
-        e.target.closest ('.delete').parentElement.remove();
-        // const cantidadLi = document.querySelector('.list-item')
-        // console.log(cantidadLi.length);
-        conteoNota ()
+list.addEventListener('click', e => {
+    if (e.target.closest('.delete')) {
+        notas.splice(e.target.id, 1)
+        renderNotes()
+        e.target.closest('.delete').parentElement.remove();
+        // // const cantidadLi = document.querySelector('.list-item')
+        // // console.log(cantidadLi.length);
+        conteoNota()
         localStorage.setItem('notes', JSON.stringify(notas))
-    } 
-
-    else if (e.target.closest ('.seleccion')) {
-        const seleccion = e.target.closest ('.seleccion')
-        const nota = seleccion.parentElement.children [1]
-        
-        seleccion.classList.add ('check')
-        seleccion.classList.remove ('seleccion')
-        nota.classList.add ('tachado')
-        conteoNota ()
     }
-    
+
+    else if (e.target.closest('.seleccion')) {
+        const seleccion = e.target.closest('.seleccion')
+        const nota = seleccion.parentElement.children[1]
+
+        seleccion.classList.add('check')
+        seleccion.classList.remove('seleccion')
+        nota.classList.add('tachado')
+        conteoNota()
+    }
+
     titleInput.setAttribute('value', titleInput.value)
-    seleccion.classList.add ('check')
-    seleccion.classList.remove ('seleccion')
-    nota.classList.add ('tachado')      
-    
+    seleccion.classList.add('check')
+    seleccion.classList.remove('seleccion')
+    nota.classList.add('tachado')
+
     localStorage.setItem('notes', JSON.stringify(notas))
 })
 
-    const conteoNota = () => {
-        let element = list.querySelectorAll('li')
+const conteoNota = () => {
+    let element = list.querySelectorAll('li')
     let checkbox = list.querySelectorAll('.check')
     let pendientes = () => {
         if (element.length = 0) {
@@ -130,12 +132,12 @@ list.addEventListener ('click', e => {
         else {
             pendientes = 0
         }
-        }
-        pendientes ()
-    
-        conteo.innerHTML = `
+    }
+    pendientes()
+
+    conteo.innerHTML = `
             <h4 class="conteo">Total de tareas : ${element.length}</h4>
             <h4 class="conteo">Tareas completadas: ${checkbox.length}</h4>
             <h4 class="conteo">Tareas pendientes: ${pendientes}</h4>
-        `        
-    }
+        `
+}
