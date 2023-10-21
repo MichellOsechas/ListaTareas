@@ -58,6 +58,11 @@ container.addEventListener('submit', e => {
     //preventDefault, ELIMIN EL ELEMENTO PREDEFINIDO DEL SUBMIT
     e.preventDefault()
 
+    if (titleInput.value === '') {
+        alert('Los dos inputs son requeridos')
+        return
+    }
+
     //CREO UN OBJETO CON LOS VALORES DE L OS INPUTS
     const newNote = {
         title: titleInput.value
@@ -99,24 +104,28 @@ list.addEventListener('click', e => {
         // // console.log(cantidadLi.length);
         conteoNota()
         localStorage.setItem('notes', JSON.stringify(notas))
+        renderNotes()
     }
-
+    
     else if (e.target.closest('.seleccion')) {
         const seleccion = e.target.closest('.seleccion')
         const nota = seleccion.parentElement.children[1]
-
+        
         seleccion.classList.add('check')
         seleccion.classList.remove('seleccion')
         nota.classList.add('tachado')
         conteoNota()
+        localStorage.setItem('notes', JSON.stringify(notas))
     }
-
+    
     titleInput.setAttribute('value', titleInput.value)
     seleccion.classList.add('check')
     seleccion.classList.remove('seleccion')
     nota.classList.add('tachado')
-
+    
     localStorage.setItem('notes', JSON.stringify(notas))
+    renderNotes()
+    conteoNota()
 })
 
 const conteoNota = () => {
@@ -134,10 +143,10 @@ const conteoNota = () => {
         }
     }
     pendientes()
-
+    
     conteo.innerHTML = `
             <h4 class="conteo">Total de tareas : ${element.length}</h4>
             <h4 class="conteo">Tareas completadas: ${checkbox.length}</h4>
             <h4 class="conteo">Tareas pendientes: ${pendientes}</h4>
-        `
+    `
 }
