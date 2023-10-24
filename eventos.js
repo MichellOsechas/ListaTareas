@@ -96,24 +96,19 @@ const getNotes = () => {
 getNotes()
 
 list.addEventListener('click', e => {
-    if (e.target.closest('.delete')) {
-        notas.splice(e.target.id, 1)
-        renderNotes()
-        e.target.closest('.delete').parentElement.remove();
-        // // const cantidadLi = document.querySelector('.list-item')
-        // // console.log(cantidadLi.length);
+    const deleteBtn = e.target.closest('.delete')
+    if (deleteBtn) {
+        deleteBtn.parentElement.parentElement.remove()
         conteoNota()
         localStorage.setItem('notes', JSON.stringify(notas))
-        renderNotes()
     }
     
     else if (e.target.closest('.seleccion')) {
         const seleccion = e.target.closest('.seleccion')
         const nota = seleccion.parentElement.children[1]
         
-        seleccion.classList.add('check')
-        seleccion.classList.remove('seleccion')
-        nota.classList.add('tachado')
+        seleccion.classList.toggle('check')
+        nota.classList.toggle('tachado')
         conteoNota()
         localStorage.setItem('notes', JSON.stringify(notas))
     }
