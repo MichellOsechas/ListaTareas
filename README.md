@@ -1,7 +1,7 @@
 # ListaTareas
 A simple and intuitive todo app.
 
-Made with HTML, CSS, Tailwind and JavaScript.
+Made with: HTML, CSS, Tailwind and JavaScript.
 
 Todo app that let you write down tasks and save them in the browser.
 
